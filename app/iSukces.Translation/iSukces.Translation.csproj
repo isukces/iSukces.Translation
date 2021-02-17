@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net46;net47;netcoreapp3.1</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>iSukces.Translation</Title>
+    <Copyright>Copyright © by Internet Sukces Piotr Stęclik 2021</Copyright>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>false</IncludeSource>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageProjectUrl>https://github.com/isukces/iSukces.Translation</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/isukces/iSukces.Translation/blob/main/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/isukces/iSukces.Translation</RepositoryUrl>
+    <PackageTags>C#, Text, Translation</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/isukces/iSukces.Translation/main/doc/iSukces.Translation.icon.png</PackageIconUrl>
+    <AssemblyVersion>1.0.21048.2</AssemblyVersion>
+    <Version>1.0.21048.2</Version>
+    <FileVersion>1.0.21048.2</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+  </ItemGroup>
+</Project>
