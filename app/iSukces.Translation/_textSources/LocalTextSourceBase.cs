@@ -17,7 +17,7 @@ namespace iSukces.Translation
             if (!(TranslationHolder is null))
                 TranslationHolder.OnChangeTranslations -= TranslationHolderOnOnChangeTranslations;
             TranslationHolder = translationHolder;
-            Value              = GetCurrentTranslation();
+            Value             = GetCurrentTranslation();
             if (!(TranslationHolder is null))
                 TranslationHolder.OnChangeTranslations += TranslationHolderOnOnChangeTranslations;
         }
