@@ -13,9 +13,9 @@
     <RepositoryUrl>https://github.com/isukces/iSukces.Translation</RepositoryUrl>
     <PackageTags>C#, Text, Translation</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/isukces/iSukces.Translation/main/doc/iSukces.Translation.icon.png</PackageIconUrl>
-    <AssemblyVersion>1.0.21050.3</AssemblyVersion>
-    <Version>1.0.21050.3</Version>
-    <FileVersion>1.0.21050.3</FileVersion>
+    <AssemblyVersion>1.0.21050.4</AssemblyVersion>
+    <Version>1.0.21050.4</Version>
+    <FileVersion>1.0.21050.4</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
