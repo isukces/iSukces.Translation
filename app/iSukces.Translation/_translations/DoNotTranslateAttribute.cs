@@ -15,7 +15,14 @@ namespace iSukces.Translation
 
     public enum DoNotTranslateReason
     {
+        /// <summary>
+        /// Ignore class or member in scanning process
+        /// </summary>
         Ignore,
+        
+        /// <summary>
+        /// Contains text like company name
+        /// </summary>
         SameForAllLanguages
     }
 }

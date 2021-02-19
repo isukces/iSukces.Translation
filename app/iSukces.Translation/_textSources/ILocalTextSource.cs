@@ -1,5 +1,6 @@
 namespace iSukces.Translation
 {
+    
     public interface ILocalTextSource
     {
         bool IsLocalizable { get; }
