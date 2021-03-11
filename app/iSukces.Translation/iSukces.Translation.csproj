@@ -2,22 +2,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net46;net47;netcoreapp3.1</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>iSukces.Translation</Title>
     <Copyright>Copyright © by Internet Sukces Piotr Stęclik 2021</Copyright>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>false</IncludeSource>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageProjectUrl>https://github.com/isukces/iSukces.Translation</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/isukces/iSukces.Translation/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>lib/iSukces.Translation.icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/isukces/iSukces.Translation</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <!--<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+-->
     <PackageTags>C#, Text, Translation</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/isukces/iSukces.Translation/main/doc/iSukces.Translation.icon.png</PackageIconUrl>
-    <AssemblyVersion>1.0.21050.4</AssemblyVersion>
-    <Version>1.0.21050.4</Version>
-    <FileVersion>1.0.21050.4</FileVersion>
+    <AssemblyVersion>1.0.21070.5</AssemblyVersion>
+    <Version>1.0.21070.5</Version>
+    <FileVersion>1.0.21070.5</FileVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Sign.snk">
+      <Link>Sign.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\license.txt" Pack="true" PackagePath="lib" />
+    <None Include="..\..\doc\iSukces.Translation.icon.png" Pack="true" PackagePath="lib" />
   </ItemGroup>
 </Project>
