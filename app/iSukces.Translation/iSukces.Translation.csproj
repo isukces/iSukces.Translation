@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net46;net47;netcoreapp3.1</TargetFrameworks>
-    <Title>iSukces.Translation</Title>
+    <TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net50</TargetFrameworks>
+    <Title>Text translation interfaces</Title>
     <Copyright>Copyright © by Internet Sukces Piotr Stęclik 2021</Copyright>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>false</IncludeSource>
@@ -18,11 +18,12 @@
     <!--<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 -->
     <PackageTags>C#, Text, Translation</PackageTags>
-    <AssemblyVersion>1.0.21070.5</AssemblyVersion>
-    <Version>1.0.21070.5</Version>
-    <FileVersion>1.0.21070.5</FileVersion>
+    <AssemblyVersion>1.0.21247.7</AssemblyVersion>
+    <Version>1.0.21247.7</Version>
+    <FileVersion>1.0.21247.7</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
+    <Authors>Piotr Stęclik</Authors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
