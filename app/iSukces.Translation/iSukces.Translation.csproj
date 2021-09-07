@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net50</TargetFrameworks>
+    <TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net50;netstandard2.0</TargetFrameworks>
     <Title>Text translation interfaces</Title>
     <Copyright>Copyright © by Internet Sukces Piotr Stęclik 2021</Copyright>
     <IncludeSymbols>true</IncludeSymbols>
@@ -18,9 +18,9 @@
     <!--<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 -->
     <PackageTags>C#, Text, Translation</PackageTags>
-    <AssemblyVersion>1.0.21247.7</AssemblyVersion>
-    <Version>1.0.21247.7</Version>
-    <FileVersion>1.0.21247.7</FileVersion>
+    <AssemblyVersion>1.0.21250.8</AssemblyVersion>
+    <Version>1.0.21250.8</Version>
+    <FileVersion>1.0.21250.8</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
     <Authors>Piotr Stęclik</Authors>
@@ -35,7 +35,7 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Sign.snk">
