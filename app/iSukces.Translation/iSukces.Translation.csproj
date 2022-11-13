@@ -18,9 +18,9 @@
     <!--<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 -->
     <PackageTags>C#, Text, Translation</PackageTags>
-    <AssemblyVersion>1.0.21250.8</AssemblyVersion>
-    <Version>1.0.21250.8</Version>
-    <FileVersion>1.0.21250.8</FileVersion>
+    <AssemblyVersion>1.0.22317.9</AssemblyVersion>
+    <Version>1.0.22317.9</Version>
+    <FileVersion>1.0.22317.9</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
     <Authors>Piotr Stęclik</Authors>
@@ -35,7 +35,7 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Sign.snk">
