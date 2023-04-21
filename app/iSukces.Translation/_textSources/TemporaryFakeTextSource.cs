@@ -32,9 +32,9 @@ namespace iSukces.Translation
 
         public override bool Equals(object obj)
         {
-            return ReferenceEquals(this, obj) || obj is FakeTextSource other && Equals(other);
+            return ReferenceEquals(this, obj) || obj is TemporaryFakeTextSource other && Equals(other);
         }
-
+        
         public override int GetHashCode()
         {
             return Value.GetHashCode();
