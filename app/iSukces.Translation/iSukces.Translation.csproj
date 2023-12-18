@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net50;netstandard2.0;net70</TargetFrameworks>
+    <TargetFrameworks>net45;net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
     <Title>Text translation interfaces</Title>
     <Copyright>Copyright © Internet Sukces Piotr Stęclik 2021-2023</Copyright>
     <IncludeSymbols>true</IncludeSymbols>
