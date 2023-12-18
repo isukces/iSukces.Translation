@@ -9,9 +9,9 @@ namespace iSukces.Translation
         [NotNull]
         public static TOut[] MapToArray<TIn, TOut>(this IReadOnlyList<TIn> src, Func<TIn, TOut> map)
         {
-            if (src is null) return new TOut[0];
+            if (src is null) return Array.Empty<TOut>();
             var count = src.Count;
-            if (count == 0) return new TOut[0];
+            if (count == 0) return Array.Empty<TOut>();
             var result = new TOut[count];
             // ReSharper disable once LoopCanBeConvertedToQuery
             for (var i = 0; i < count; i++)

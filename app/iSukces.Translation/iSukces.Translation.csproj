@@ -1,38 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
-    <Title>Text translation interfaces</Title>
     <Copyright>Copyright © Internet Sukces Piotr Stęclik 2021-2023</Copyright>
-    <IncludeSymbols>true</IncludeSymbols>
-    <IncludeSource>false</IncludeSource>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <PackageProjectUrl>https://github.com/isukces/iSukces.Translation</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageIcon>lib/iSukces.Translation.icon.png</PackageIcon>
-    <RepositoryUrl>https://github.com/isukces/iSukces.Translation</RepositoryUrl>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <PackageTags>C#, Text, Translation</PackageTags>
+    <TargetFrameworks>net45;net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
     <AssemblyVersion>1.0.23111.10</AssemblyVersion>
-    <Version>1.0.23111.10</Version>
     <FileVersion>1.0.23111.10</FileVersion>
+    <Version>1.0.23111.10</Version>
+    <LangVersion>11</LangVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSource>false</IncludeSource>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageIcon>lib/iSukces.Translation.icon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/isukces/iSukces.Translation</PackageProjectUrl>
+    <PackageTags>C#, Text, Translation</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/isukces/iSukces.Translation</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Title>Text translation interfaces</Title>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <NoWarn>1701;1702;1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
@@ -42,12 +43,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\doc\iSukces.Translation.icon.png" Pack="true" PackagePath="lib" />
+    <None Include="..\..\license.txt" Pack="true" PackagePath="lib" />
     <None Include="..\Sign.snk">
       <Link>Sign.snk</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\license.txt" Pack="true" PackagePath="lib" />
-    <None Include="..\..\doc\iSukces.Translation.icon.png" Pack="true" PackagePath="lib" />
   </ItemGroup>
 </Project>
