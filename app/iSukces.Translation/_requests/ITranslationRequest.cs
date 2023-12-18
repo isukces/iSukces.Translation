@@ -1,7 +1,6 @@
-﻿namespace iSukces.Translation
+﻿namespace iSukces.Translation;
+
+public interface ITranslationRequest
 {
-    public interface ITranslationRequest  
-    {
-        string Key { get; }
-    }
+    string Key { get; }
 }

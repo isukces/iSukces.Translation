@@ -1,26 +1,19 @@
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public interface ILocalTextSource
 {
-    
-    public interface ILocalTextSource
-    {
-        bool IsLocalizable { get; }
+    bool IsLocalizable { get; }
 
-        /// <summary>
-        ///     Bieżące tłumaczenie
-        /// </summary>
-        string Value { get; }
-    }
+    /// <summary>
+    ///     Bieżące tłumaczenie
+    /// </summary>
+    string Value { get; }
+}
 
-    public static class LocalTextSourceExt
-    {
-        public static string Format(this ILocalTextSource src, params object[] args)
-        {
-            return string.Format(src.Value ?? string.Empty, args);
-        }
+public static class LocalTextSourceExt
+{
+    public static string Format(this ILocalTextSource src, params object[] args) => string.Format(src.Value ?? string.Empty, args);
 
-        public static ILocalTextSource WithParameters(this ILocalTextSource src, params object[] args)
-        {
-            return new ParametricLocalTextSource(src, args);
-        }
-    }
+    public static ILocalTextSource WithParameters(this ILocalTextSource src, params object[] args)
+        => new ParametricLocalTextSource(src, args);
 }

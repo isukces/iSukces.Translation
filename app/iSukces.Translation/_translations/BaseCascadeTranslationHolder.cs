@@ -1,53 +1,50 @@
 ﻿using System;
 
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public class BaseCascadeTranslationHolder : ITranslationHolder
 {
-    public class BaseCascadeTranslationHolder : ITranslationHolder
+    private void CallOnChangeTranslations()
     {
-        public bool TryGetTranslation(string fullTransaltionKey, out string translation)
-        {
-            if (BaseHolder != null)
-                return BaseHolder.TryGetTranslation(fullTransaltionKey, out translation);
-            return TryGetTranslationInternal(fullTransaltionKey, out translation);
-        }
+        var handler = OnChangeTranslations;
+        handler?.Invoke(this, EventArgs.Empty);
+    }
 
+    public bool TryGetTranslation(string fullTransaltionKey, out string translation)
+    {
+        if (BaseHolder is not null)
+            return BaseHolder.TryGetTranslation(fullTransaltionKey, out translation);
+        return TryGetTranslationInternal(fullTransaltionKey, out translation);
+    }
+    
+    protected virtual bool TryGetTranslationInternal(string fullTransaltionKey, out string translation)
+    {
+        translation = "{{" + fullTransaltionKey + "}}";
+        return false;
+    }
 
-        protected virtual bool TryGetTranslationInternal(string fullTransaltionKey, out string translation)
-        {
-            translation = "{{" + fullTransaltionKey + "}}";
-            return false;
-        }
+    private void ValueOnOnChangeTranslations(object? sender, EventArgs e)
+    {
+        CallOnChangeTranslations();
+    }
 
-        private void CallOnChangeTranslations()
+    public ITranslationHolder? BaseHolder
+    {
+        get => _baseHolder;
+        set
         {
-            var handler = OnChangeTranslations;
-            handler?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void ValueOnOnChangeTranslations(object sender, EventArgs e)
-        {
+            if (ReferenceEquals(_baseHolder, value))
+                return;
+            if (value is not null)
+                value.OnChangeTranslations -= ValueOnOnChangeTranslations;
+            _baseHolder = value;
+            if (value is not null)
+                value.OnChangeTranslations += ValueOnOnChangeTranslations;
             CallOnChangeTranslations();
         }
-
-
-        public ITranslationHolder BaseHolder
-        {
-            get => _baseHolder;
-            set
-            {
-                if (ReferenceEquals(_baseHolder, value))
-                    return;
-                if (value != null)
-                    value.OnChangeTranslations -= ValueOnOnChangeTranslations;
-                _baseHolder = value;
-                if (value != null)
-                    value.OnChangeTranslations += ValueOnOnChangeTranslations;
-                CallOnChangeTranslations();
-            }
-        }
-
-        private ITranslationHolder _baseHolder;
-
-        public event EventHandler OnChangeTranslations;
     }
+
+    public event EventHandler? OnChangeTranslations;
+
+    private ITranslationHolder? _baseHolder;
 }

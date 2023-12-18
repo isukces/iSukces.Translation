@@ -1,24 +1,23 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public sealed class LocalTextSourceHelper
 {
-    public sealed class LocalTextSourceHelper
+    public static ILocalTextSource MakeCommaSeparated(IReadOnlyList<ILocalTextSource> list)
     {
-        public static ILocalTextSource MakeCommaSeparated(IReadOnlyList<ILocalTextSource> list)
+        if (list is null)
+            return new FakeTextSource(string.Empty);
+        var listCount = list.Count;
+        switch (listCount)
         {
-            if (list is null)
+            case 0:
                 return new FakeTextSource(string.Empty);
-            var listCount = list.Count;
-            switch (listCount)
-            {
-                case 0:
-                    return new FakeTextSource(string.Empty);
-                case 1:
-                    return list[0];
-                default:
-                    return new JoinedLocalTextSource(", ", list.ToArray());
-            }
+            case 1:
+                return list[0];
+            default:
+                return new JoinedLocalTextSource(", ", list.ToArray());
         }
     }
 }

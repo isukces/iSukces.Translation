@@ -1,10 +1,9 @@
 using System;
 
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public interface ITranslationHolder
 {
-    public interface ITranslationHolder
-    {
-        bool TryGetTranslation(string fullTransaltionKey, out string translation);
-        event EventHandler OnChangeTranslations;
-    }
+    bool TryGetTranslation(string fullTransaltionKey, out string translation);
+    event EventHandler? OnChangeTranslations;
 }

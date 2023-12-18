@@ -1,10 +1,9 @@
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public interface IMinimumTextSource
 {
-    public interface IMinimumTextSource
-    {
-        string Text     { get; }
-        string Language { get; }
-        string Key      { get; }
-        string Hint     { get; }
-    }
+    string Text     { get; }
+    string Language { get; }
+    string Key      { get; }
+    string Hint     { get; }
 }

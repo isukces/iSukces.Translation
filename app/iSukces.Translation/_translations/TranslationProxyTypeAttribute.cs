@@ -1,15 +1,11 @@
 ﻿using System;
 
-namespace iSukces.Translation
-{
-    [AttributeUsage(AttributeTargets.Assembly)]
-    public sealed class TranslationProxyTypeAttribute : Attribute
-    {
-        public TranslationProxyTypeAttribute(Type proxyType)
-        {
-            ProxyType = proxyType;
-        }
+namespace iSukces.Translation;
 
-        public Type ProxyType { get; }
-    }
+[AttributeUsage(AttributeTargets.Assembly)]
+public sealed class TranslationProxyTypeAttribute : Attribute
+{
+    public TranslationProxyTypeAttribute(Type proxyType) => ProxyType = proxyType;
+
+    public Type ProxyType { get; }
 }

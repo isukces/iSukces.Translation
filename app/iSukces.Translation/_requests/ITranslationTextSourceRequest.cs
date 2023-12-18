@@ -1,9 +1,9 @@
-﻿namespace iSukces.Translation
+﻿namespace iSukces.Translation;
+
+public interface ITranslationTextSourceRequest : ITranslationRequest
 {
-    public interface ITranslationTextSourceRequest : ITranslationRequest
-    {
-        string GetLanguage();
-        string GetSourceTextToTranslate();
-        string TranslationHint { get; }
-    }
+    string GetLanguage();
+    string GetSourceTextToTranslate();
+
+    string TranslationHint { get; }
 }

@@ -1,13 +1,10 @@
 ﻿using System;
-using JetBrains.Annotations;
 
-namespace iSukces.Translation
+namespace iSukces.Translation;
+
+public interface ICreateLiteLocalTextRequest : ITranslationTextSourceRequest
 {
-    public interface ICreateLiteLocalTextRequest : ITranslationTextSourceRequest
-    {
-        string FieldName { get; }
+    string FieldName { get; }
 
-        [CanBeNull]
-        Type FieldHostingType { get; }
-    }
+    Type? FieldHostingType { get; }
 }

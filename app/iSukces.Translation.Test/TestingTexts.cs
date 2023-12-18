@@ -1,17 +1,16 @@
-﻿namespace iSukces.Translation.Test
+﻿namespace iSukces.Translation.Test;
+
+[Translate("MyTexts")]
+public class TestingTexts
 {
-    [Translate("MyTexts")]
-    public class TestingTexts
+    public static string Master = "Master text";
+
+    public class Nested
     {
-        public static string Master = "Master text";
+        public static string Slave = "Slave text";
 
-        public class Nested
-        {
-            public static string Slave = "Slave text";
+        [DoNotTranslate] public static string Skip = "Slave text";
 
-            [DoNotTranslate] public static string Skip = "Slave text";
-
-            public static int SomeNumber;
-        }
+        public static int SomeNumber;
     }
 }
