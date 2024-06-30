@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023</Copyright>
-    <TargetFrameworks>net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net48;netcoreapp3.1;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <IsPackable>false</IsPackable>
