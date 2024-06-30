@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023</Copyright>
-        <TargetFrameworks>net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
-        <LangVersion>11</LangVersion>
-        <Authors>Internet Sukces Piotr Stęclik</Authors>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\iSukces.Translation\iSukces.Translation.csproj"/>
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="coverlet.collector" Version="6.0.0">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
-        <PackageReference Include="xunit" Version="2.6.3"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
+  <PropertyGroup>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023</Copyright>
+    <TargetFrameworks>net48;netcoreapp3.1;netstandard2.0;net7.0;net8.0</TargetFrameworks>
+    <LangVersion>11</LangVersion>
+    <Authors>Internet Sukces Piotr Stęclik</Authors>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iSukces.Translation\iSukces.Translation.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="xunit" Version="2.8.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>
