@@ -4,26 +4,36 @@ namespace iSukces.Translation;
 
 public sealed class LocalTextSource : LocalTextSourceBase, IEquatable<LocalTextSource>
 {
+    [Obsolete("Use LocalTextSource(string key, string originalText) instead", true)]
     public LocalTextSource(string originalText, string key)
-        : base(key)
+        : base(key, originalText)
     {
         if (string.IsNullOrEmpty(originalText))
             throw new ArgumentNullException(nameof(originalText));
         OriginalText = originalText;
     }
 
+    public LocalTextSource(string key, string originalText, string? translationHint)
+        : base(key, originalText)
+    {
+        if (string.IsNullOrEmpty(originalText))
+            throw new ArgumentNullException(nameof(originalText));
+        OriginalText    = originalText;
+        TranslationHint = translationHint;
+    }
+
     public static bool operator ==(LocalTextSource left, LocalTextSource right) => Equals(left, right);
 
     public static bool operator !=(LocalTextSource left, LocalTextSource right) => !Equals(left, right);
 
-    public override bool Equals(object other)
+    public override bool Equals(object? other)
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
         return other is LocalTextSource otherCasted && Equals(otherCasted);
     }
 
-    public bool Equals(LocalTextSource other)
+    public bool Equals(LocalTextSource? other)
     {
         if (other is null) return false;
         if (ReferenceEquals(this, other)) return true;
@@ -37,7 +47,7 @@ public sealed class LocalTextSource : LocalTextSourceBase, IEquatable<LocalTextS
 
     protected override string GetCurrentTranslation()
     {
-        if (!(TranslationHolder is null) && TranslationHolder.TryGetTranslation(OriginalKey, out var text))
+        if (TranslationHolder is not null && TranslationHolder.TryGetTranslation(OriginalKey, out var text))
             return text;
         return OriginalText;
     }
@@ -66,5 +76,5 @@ public sealed class LocalTextSource : LocalTextSourceBase, IEquatable<LocalTextS
 
     public string OriginalText { get; }
 
-    public string? TranslationHint { get; set; }
+    public string? TranslationHint { get; }
 }

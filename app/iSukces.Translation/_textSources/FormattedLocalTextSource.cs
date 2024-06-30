@@ -5,7 +5,7 @@ namespace iSukces.Translation;
 public sealed class FormattedLocalTextSource : LocalTextSourceBase, IEquatable<FormattedLocalTextSource>
 {
     public FormattedLocalTextSource(string originalText, string key, params object[] parameters)
-        : base(key)
+        : base(key, string.Format(originalText, parameters))
         => _parameters = parameters;
 
     public static bool operator ==(FormattedLocalTextSource left, FormattedLocalTextSource right) => Equals(left, right);

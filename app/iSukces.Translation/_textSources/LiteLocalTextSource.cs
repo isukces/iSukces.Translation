@@ -4,8 +4,8 @@ namespace iSukces.Translation;
 
 public sealed class LiteLocalTextSource : LocalTextSourceBase, IEquatable<LiteLocalTextSource>
 {
-    public LiteLocalTextSource(string key)
-        : base(key)
+    public LiteLocalTextSource(string key, string? value = null)
+        : base(key, value ??"")
     {
     }
 
@@ -13,14 +13,15 @@ public sealed class LiteLocalTextSource : LocalTextSourceBase, IEquatable<LiteLo
 
     public static bool operator !=(LiteLocalTextSource left, LiteLocalTextSource right) => !Equals(left, right);
 
-    public bool Equals(LiteLocalTextSource other)
+    public bool Equals(LiteLocalTextSource? other)
     {
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
         return OriginalKey == other.OriginalKey;
     }
 
-    public override bool Equals(object obj) => ReferenceEquals(this, obj) || obj is LiteLocalTextSource other && Equals(other);
+    public override bool Equals(object? obj) 
+        => ReferenceEquals(this, obj) || obj is LiteLocalTextSource other && Equals(other);
 
     protected override string GetCurrentTranslation()
     {

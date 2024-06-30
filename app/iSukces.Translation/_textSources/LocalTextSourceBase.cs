@@ -4,20 +4,21 @@ namespace iSukces.Translation;
 
 public abstract class LocalTextSourceBase : TranslationNotifyPropertyChangedBase, ILocalTextSource
 {
-    protected LocalTextSourceBase(string key)
+    protected LocalTextSourceBase(string key, string value)
     {
         if (string.IsNullOrEmpty(key))
             throw new ArgumentNullException(nameof(key));
         OriginalKey = key;
+        Value       = value;
     }
 
     public void Attach(ITranslationHolder translationHolder)
     {
-        if (!(TranslationHolder is null))
+        if (TranslationHolder is not null)
             TranslationHolder.OnChangeTranslations -= TranslationHolderOnOnChangeTranslations;
         TranslationHolder = translationHolder;
         Value             = GetCurrentTranslation();
-        if (!(TranslationHolder is null))
+        if (TranslationHolder is not null)
             TranslationHolder.OnChangeTranslations += TranslationHolderOnOnChangeTranslations;
     }
 
