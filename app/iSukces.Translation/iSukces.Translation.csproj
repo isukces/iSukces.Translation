@@ -3,13 +3,13 @@
   <PropertyGroup>
     <Copyright>Copyright © Internet Sukces Piotr Stęclik 2021-2024</Copyright>
     <TargetFrameworks>net45;net48;netcoreapp3.1;netstandard2.0;net6.0;net8.0</TargetFrameworks>
-    <AssemblyVersion>1.24.630.12</AssemblyVersion>
-    <FileVersion>1.24.630.12</FileVersion>
-    <Version>1.24.630.12</Version>
-    <LangVersion>11</LangVersion>
+    <AssemblyVersion>1.24.1016.13</AssemblyVersion>
+    <FileVersion>1.24.1016.13</FileVersion>
+    <Version>1.24.1016.13</Version>
+    <LangVersion>12</LangVersion>
     <SignAssembly>true</SignAssembly>
     <Nullable>enable</Nullable>
-    <AssemblyOriginatorKeyFile>..\Sign.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
@@ -46,8 +46,5 @@
   <ItemGroup>
     <None Include="..\..\doc\iSukces.Translation.icon.png" Pack="true" PackagePath="lib" />
     <None Include="..\..\license.txt" Pack="true" PackagePath="lib" />
-    <None Include="..\Sign.snk">
-      <Link>Sign.snk</Link>
-    </None>
   </ItemGroup>
 </Project>

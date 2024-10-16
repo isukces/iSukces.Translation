@@ -61,7 +61,8 @@ public abstract class AbstractCombinedTextSource : TranslationNotifyPropertyChan
     {
         get
         {
-            if (_value is not null) return _value;
+            if (_value is not null) 
+                return _value;
             _value = GetCurrentValue(_parameters);
             return _value;
         }

@@ -9,7 +9,7 @@ public sealed class FormattedLocalTextSourceNoTranslated : AbstractCombinedTextS
         : base(parameters)
         => _format = format;
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
         => ReferenceEquals(this, obj); // || obj is FormattedLocalTextSourceNoTranslated other && Equals(other);
 
     protected override string GetCurrentValue(ILocalTextSource[] parameters)

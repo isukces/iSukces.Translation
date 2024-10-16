@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -7,7 +8,7 @@ public sealed class ParametricLocalTextSource : TranslationNotifyPropertyChanged
 {
     public ParametricLocalTextSource(ILocalTextSource item, params object[] args)
     {
-        _item         = item;
+        _item         = item ?? throw new ArgumentNullException(nameof(item));
         _args         = args;
         IsLocalizable = item.IsLocalizable;
         if (_item is INotifyPropertyChanged npc)
@@ -16,7 +17,7 @@ public sealed class ParametricLocalTextSource : TranslationNotifyPropertyChanged
     }
 
 
-    private void NpcOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+    private void NpcOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Value))
             UpdateValue();
@@ -24,10 +25,10 @@ public sealed class ParametricLocalTextSource : TranslationNotifyPropertyChanged
 
     private void UpdateValue()
     {
-        var value = _item?.Value;
+        var value = _item.Value;
         if (value is null)
         {
-            Value = null;
+            Value = "";
             return;
         }
 
@@ -47,11 +48,11 @@ public sealed class ParametricLocalTextSource : TranslationNotifyPropertyChanged
     public string Value
     {
         get => _value;
-        private set => SetAndNotify(ref _value, value);
+        private set => SetAndNotify(ref _value, value ?? string.Empty);
     }
 
     private readonly ILocalTextSource _item;
     private readonly object[] _args;
 
-    private string _value;
+    private string _value = string.Empty;
 }

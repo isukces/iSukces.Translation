@@ -6,7 +6,7 @@ public delegate void MemberToTranslationKeyDelegate(MemberToTranslationKeyArgs a
 
 public sealed class MemberToTranslationKeyArgs : ToTranslationKeyArgs<MemberInfo>
 {
-    public MemberToTranslationKeyArgs(TranslationKey originalKey, MemberInfo source)
+    public MemberToTranslationKeyArgs(TranslationKey? originalKey, MemberInfo source)
         : base(originalKey, source)
     {
     }

@@ -19,7 +19,7 @@ public struct StaticFieldLocalTextSource : ILocalTextSource
 
     public bool IsLocalizable { get; }
 
-    public string Value => (string)_field.GetValue(null);
+    public string Value => (string?)_field.GetValue(null) ?? string.Empty;
 
     private readonly FieldInfo _field;
 }

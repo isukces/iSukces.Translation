@@ -7,13 +7,11 @@ public sealed class TranslationKey : IEquatable<TranslationKey>, IComparable<Tra
 {
     private TranslationKey(string path)
     {
-        if (path is null) throw new ArgumentNullException(nameof(path));
-        // path = path.TrimEnd(' ', '.');
+        Path = path ?? throw new ArgumentNullException(nameof(path));
 #if DEBUG
-            if (path.Contains("..") || path.EndsWith(" ") || path.EndsWith("."))
-                throw new Exception("Invalid translation key");
+        if (path.Contains("..") || path.EndsWith(" ") || path.EndsWith("."))
+            throw new Exception("Invalid translation key");
 #endif
-        Path = path;
     }
 
     public static TranslationKey? Join(TranslationKey[]? items)
@@ -43,7 +41,7 @@ public sealed class TranslationKey : IEquatable<TranslationKey>, IComparable<Tra
         x = x?.Trim();
         if (string.IsNullOrEmpty(x))
             return null;
-        return new TranslationKey(x);
+        return new TranslationKey(x!);
     }
 
     public static bool operator >(TranslationKey left, TranslationKey right) => Comparer<TranslationKey>.Default.Compare(left, right) > 0;
@@ -86,7 +84,7 @@ public sealed class TranslationKey : IEquatable<TranslationKey>, IComparable<Tra
     public TranslationKey IgnoreAbsolute()
     {
         if (IsAbsolute)
-            return (TranslationKey)Path.Substring(1);
+            return new TranslationKey(Path.Substring(1));
         return this;
     }
 
@@ -101,7 +99,7 @@ public sealed class TranslationKey : IEquatable<TranslationKey>, IComparable<Tra
         path = path.StartsWith(prefix)
             ? path.Substring(prefix.Length)
             : "." + path;
-        return (TranslationKey)path;
+        return new TranslationKey(path);
     }
 
     public string Path { get; }

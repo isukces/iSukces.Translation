@@ -24,7 +24,7 @@ public static class TranslationUtils
         return key;
     }
 
-    private static TranslationKey ApplyTypeToTranslationKey(TranslationKey key, Type type)
+    private static TranslationKey? ApplyTypeToTranslationKey(TranslationKey? key, Type type)
     {
         var e = TypeToTranslationKey;
         if (e == null) return key;
@@ -40,28 +40,34 @@ public static class TranslationUtils
     {
         var attributeKey = member.GetCustomAttribute<TranslateAttribute>()?.Key;
         if (!string.IsNullOrEmpty(attributeKey))
-            return (TranslationKey)attributeKey;
-        var key = (TranslationKey)member.Name;
+            return (TranslationKey?)attributeKey;
+        var key = (TranslationKey?)member.Name;
         key = ApplyMemberToTranslationKey(key, member);
         return key;
     }
 
-    public static TranslationKey GetTranslationKeyFromType(Type type)
+    public static TranslationKey? GetTranslationKeyFromType(Type? type)
     {
         if (type is null)
             return null;
 
         var key = type.GetCustomAttribute<TranslateAttribute>()?.Key;
         if (!string.IsNullOrEmpty(key))
-            return ApplyTypeToTranslationKey((TranslationKey)key, type);
+            return ApplyTypeToTranslationKey((TranslationKey?)key, type);
 
         var declaringType = type.DeclaringType;
         if (declaringType is null)
             return ApplyTypeToTranslationKey(null, type);
         var parentClassKey = GetTranslationKeyFromType(declaringType);
-        var translationKey = parentClassKey is null
-            ? null
-            : parentClassKey + (TranslationKey)type.Name;
+        TranslationKey? translationKey;
+        if (parentClassKey is null)
+            translationKey = null;
+        else
+        {
+            var typeName = (TranslationKey?)type.Name;
+            translationKey = parentClassKey + typeName;
+        }
+
         return ApplyTypeToTranslationKey(translationKey, type);
     }
 
@@ -92,7 +98,8 @@ public static class TranslationUtils
             if (memberKey is null)
                 continue;
             var key = typeKey + memberKey;
-            yield return new StaticFieldLocalTextSource(key, field, isLocalizable);
+            if (key is not null) // should be always true
+                yield return new StaticFieldLocalTextSource(key, field, isLocalizable);
         }
 
         if (!deepScan) yield break;

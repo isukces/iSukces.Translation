@@ -43,8 +43,8 @@ public abstract class LocalTextSourceBase : TranslationNotifyPropertyChangedBase
     public string Value
     {
         get => _value;
-        set => SetAndNotify(ref _value, value);
+        set => SetAndNotify(ref _value, value ?? "");
     }
 
-    private string _value;
+    private string _value = "";
 }

@@ -70,7 +70,7 @@ public sealed class CombinedLocalTextSource : TranslationNotifyPropertyChangedBa
         return sources;
     }
 
-    private void NpcOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+    private void NpcOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(Value))
             UpdateValue();
@@ -86,9 +86,9 @@ public sealed class CombinedLocalTextSource : TranslationNotifyPropertyChangedBa
     public string Value
     {
         get => _value;
-        set => SetAndNotify(ref _value, value);
+        set => SetAndNotify(ref _value, value ?? "");
     }
 
     private readonly IReadOnlyList<ILocalTextSource> _items;
-    private string _value;
+    private string _value = "";
 }

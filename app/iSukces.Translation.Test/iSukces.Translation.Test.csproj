@@ -2,10 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023</Copyright>
-    <TargetFrameworks>net48;netcoreapp3.1;netstandard2.0;net6.0;net8.0</TargetFrameworks>
-    <LangVersion>11</LangVersion>
+    <TargetFrameworks>net48;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+    <LangVersion>12</LangVersion>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <IsPackable>false</IsPackable>
+    <SignAssembly>true</SignAssembly>
+    <Nullable>enable</Nullable>
+    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\iSukces.Translation\iSukces.Translation.csproj" />

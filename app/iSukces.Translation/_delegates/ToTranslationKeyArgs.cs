@@ -1,17 +1,13 @@
 ﻿namespace iSukces.Translation;
 
-public abstract class ToTranslationKeyArgs
+public abstract class ToTranslationKeyArgs(TranslationKey? originalKey)
 {
-    public ToTranslationKeyArgs(TranslationKey originalKey) => OriginalKey = originalKey;
-
-    public TranslationKey  OriginalKey { get; }
+    public TranslationKey? OriginalKey { get; } = originalKey;
     public TranslationKey? Key         { get; set; }
 }
 
-public abstract class ToTranslationKeyArgs<T> : ToTranslationKeyArgs
+public abstract class ToTranslationKeyArgs<T>(TranslationKey? originalKey, T source) 
+    : ToTranslationKeyArgs(originalKey)
 {
-    protected ToTranslationKeyArgs(TranslationKey originalKey, T source)
-        : base(originalKey) => Source = source;
-
-    public T Source { get; }
+    public T Source { get; } = source;
 }

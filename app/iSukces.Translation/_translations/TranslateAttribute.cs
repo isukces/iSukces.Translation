@@ -5,10 +5,10 @@ namespace iSukces.Translation;
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Class)]
 public sealed class TranslateAttribute : Attribute
 {
-    public TranslateAttribute(string key = null, string language = null)
+    public TranslateAttribute(string? key = null, string? language = null)
     {
-        Key      = key;
-        Language = language;
+        Key      = key ?? string.Empty;
+        Language = language ?? string.Empty;
     }
 
     private static string CoalesceNullOrWhiteSpace(string first, string second) => string.IsNullOrWhiteSpace(first) ? second : first;

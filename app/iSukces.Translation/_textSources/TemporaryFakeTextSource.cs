@@ -3,7 +3,7 @@
 namespace iSukces.Translation;
 
 /// <summary>
-///     Used when you know text should be translated but it will be translated later
+///     Used when you know text should be translated, but it will be translated later
 /// </summary>
 public sealed class TemporaryFakeTextSource : ILocalTextSource, IEquatable<TemporaryFakeTextSource>
 {
