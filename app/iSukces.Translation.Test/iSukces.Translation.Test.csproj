@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023</Copyright>
-    <TargetFrameworks>net48;netstandard2.0;net6.0;net8.0</TargetFrameworks>
-    <LangVersion>12</LangVersion>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023-2024</Copyright>
+    <ProjectGuid>{8E9F9042-84C2-4AC4-96F2-0EF2561F34F6}</ProjectGuid>
+    <TargetFrameworks>net48;net6.0;net8.0;net9.0;netstandard2.0</TargetFrameworks>
+    <LangVersion>13</LangVersion>
+    <Nullable>enable</Nullable>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
     <Authors>Internet Sukces Piotr Stęclik</Authors>
     <IsPackable>false</IsPackable>
-    <SignAssembly>true</SignAssembly>
-    <Nullable>enable</Nullable>
-    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\iSukces.Translation\iSukces.Translation.csproj" />
@@ -18,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
