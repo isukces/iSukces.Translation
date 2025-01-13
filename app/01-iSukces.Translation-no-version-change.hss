@@ -12,24 +12,12 @@ var builder = new ProjectBuilder
 	SolutionDir             = ConfigDir
 };
 
-// task: Clean
 builder.DeleteBinObj();
-
-
-// task: Nuget restore
 builder.Nuget.Restore();
-
-
-// task: Update version
-// var version = builder.UpdateVersionCore(VersionNumberStyles.YearMonthDay);
-var version = CsProjectCore.FromFile(builder.CsProjFileName).AssemblyVersion;
-
-// task: Build
+var version = builder.UpdateVersionCore(VersionNumberStyles.DoNotChange);
 builder.MsBuild();
 
 
-// task: Copy nuget
-//var srcNupkg = builder.GetNupkgFile(version, false).FullName;
 foreach (var options in new[] { PackageNameOptions.Normal, PackageNameOptions.SNupkg })
 {
 	var srcNupkg      = builder.Nuget.GetNugetPackageShortFile(version, options);
