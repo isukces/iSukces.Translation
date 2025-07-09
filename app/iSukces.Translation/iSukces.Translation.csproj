@@ -3,9 +3,12 @@
   <PropertyGroup>
     <ProjectGuid>{FCFDD825-4D04-4603-A971-688DAD193DCE}</ProjectGuid>
     <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
-    <AssemblyVersion>1.24.1201.14</AssemblyVersion>
-    <FileVersion>1.24.1201.14</FileVersion>
-    <Version>1.24.1201.14</Version>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2021-2025</Copyright>
+    <Authors>Internet Sukces Piotr Stęclik</Authors>
+    <Company>Internet Sukces Piotr Stęclik</Company>
+    <AssemblyVersion>1.25.709.15</AssemblyVersion>
+    <FileVersion>1.25.709.15</FileVersion>
+    <Version>1.25.709.15</Version>
     <LangVersion>13</LangVersion>
     <Nullable>enable</Nullable>
     <SignAssembly>true</SignAssembly>
