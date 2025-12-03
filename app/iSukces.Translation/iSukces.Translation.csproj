@@ -3,9 +3,9 @@
   <PropertyGroup>
     <ProjectGuid>{FCFDD825-4D04-4603-A971-688DAD193DCE}</ProjectGuid>
     <TargetFrameworks>net6.0;net8.0;net9.0;net10.0</TargetFrameworks>
-    <AssemblyVersion>1.25.709.15</AssemblyVersion>
-    <FileVersion>1.25.709.15</FileVersion>
-    <Version>1.25.709.15</Version>
+    <AssemblyVersion>1.25.1203.16</AssemblyVersion>
+    <FileVersion>1.25.1203.16</FileVersion>
+    <Version>1.25.1203.16</Version>
     <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <SignAssembly>true</SignAssembly>

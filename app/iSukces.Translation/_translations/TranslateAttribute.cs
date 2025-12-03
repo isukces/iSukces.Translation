@@ -13,7 +13,7 @@ public sealed class TranslateAttribute : Attribute
 
     private static string CoalesceNullOrWhiteSpace(string first, string second) => string.IsNullOrWhiteSpace(first) ? second : first;
 
-    public static TranslateAttribute operator |(TranslateAttribute a, TranslateAttribute b)
+    public static TranslateAttribute? operator |(TranslateAttribute? a, TranslateAttribute? b)
     {
         if (a is null)
             return b;
