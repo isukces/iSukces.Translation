@@ -2,14 +2,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{FCFDD825-4D04-4603-A971-688DAD193DCE}</ProjectGuid>
-    <TargetFrameworks>net6.0;net8.0;net9.0</TargetFrameworks>
-    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2021-2025</Copyright>
-    <Authors>Internet Sukces Piotr Stęclik</Authors>
-    <Company>Internet Sukces Piotr Stęclik</Company>
+    <TargetFrameworks>net6.0;net8.0;net9.0;net10.0</TargetFrameworks>
     <AssemblyVersion>1.25.709.15</AssemblyVersion>
     <FileVersion>1.25.709.15</FileVersion>
     <Version>1.25.709.15</Version>
-    <LangVersion>13</LangVersion>
+    <LangVersion>14</LangVersion>
     <Nullable>enable</Nullable>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
@@ -35,7 +32,6 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
