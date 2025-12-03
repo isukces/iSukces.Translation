@@ -3,7 +3,8 @@
 namespace iSukces.Translation;
 
 /// <summary>
-///     Used when you know text should be translated, but it will be translated later
+/// Represents a placeholder for a text source that should eventually be translated
+/// but is temporarily used as-is without any localization.
 /// </summary>
 public sealed class TemporaryFakeTextSource : ILocalTextSource, IEquatable<TemporaryFakeTextSource>
 {

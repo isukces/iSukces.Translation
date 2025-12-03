@@ -1,45 +1,73 @@
 # iSukces.Translation
 
-Provides interfaces and classes to build translations for .NET projects. Translation repository is based on key-value structure. 
+[Polska wersja README](README-pl.md)
 
-* `ITranslationHolder` interface of object, that holds translated texts. It exposes `TryGetTranslation` method for getting text and `OnChangeTranslations` event. 
+Interfaces and helpers for building key-based translations in .NET. The library focuses on simple composition of translation sources and safe data binding for UI frameworks.
 
-* `ILocalTextSource` interface is base text provider. It exposes `Value` property that holds current translation. Classes that implement `ILocalTextSource` are also 'INotifyPropertyChanged' so `Value` property can be bind in visual models i.e. WPF.
+## Installation
+- NuGet: `dotnet add package iSukces.Translation`
+- Targets: `net6.0`, `net8.0`, `net9.0`, `net10.0`
 
-    * `LiteLocalTextSource`: simple class, connected to `ITranslationHolder` that exposes single translated text. It reacts for language changes.
+## Core building blocks
+- `TranslationKey` stores a dot-separated key, supports concatenation (`+`) and absolute paths.
+- `ITranslationHolder` provides translations via `TryGetTranslation` and notifies listeners with `OnChangeTranslations`.
+  - `CascadeTranslationHolder` lets you stack holders (`BaseHolder`) and populate them with `AddFromType`.
+- `ILocalTextSource` exposes a translated `Value` and implements `INotifyPropertyChanged` for UI binding.
+  - `LiteLocalTextSource` binds a single key and reacts to holder changes.
+  - `LocalTextSource` keeps an original text and optional hint; shows the original when a translation is missing.
+  - `FormattedLocalTextSource` formats text using parameters; switches to the translated format when available.
+  - `ParametricLocalTextSource` wraps another source and re-runs `string.Format` when parameters or translations change.
+  - `CombinedLocalTextSource`, `JoinedLocalTextSource` and `LocalTextSourceHelper.MakeCommaSeparated` help compose multiple sources; `FakeTextSource` represents static/non-localizable text.
 
-    * `ParametricLocalTextSource`: Allows to construct text similar to `string.Format` where format is connected to translation sources. It updates `Value` property each time translation or parameter (if implements `INotifyPropertyChanged`) is changed.
-  
-    * `FormattedLocalTextSource`: Similar to `ParametricLocalTextSource` but not react to parameters changing. It also provides default translation used when `ITranslationHolder` is not connected or doesn't contains tranlation for given key.
- 
+## Working with translations
+```csharp
+[Translate("MyTexts")]
+public class AppTexts
+{
+    public static string Master = "Master text";
 
-### FormattedLocalTextSource sample
-`var mySrc = new FormattedLocalTextSource("Open {0}", "App.Translation.Open", description);`
+    public class Nested
+    {
+        public static string Slave = "Slave text";
+        [DoNotTranslate(DoNotTranslateReason.Ignore)] public static string Skip = "Not exported";
+    }
+}
 
-This creates `mySrc` object that excposes text calculated from `"Open {0}"` template and parameter from `description` variable. If translation holder is connected and it contains text for `"App.Translation.Open"` key then translation from holder is used instead of `"Open {0}"` template.    
+var holder = new CascadeTranslationHolder();
+holder.AddFromType(typeof(AppTexts)); // scans static string fields, builds keys MyTexts.Master, MyTexts.Nested.Slave
 
-### Sample binding 
-Assume we have `AppTranslations` with static field `StrOk`. 
+var text = new LiteLocalTextSource("MyTexts.Master");
+text.Attach(holder); // keeps Value in sync with holder changes
+```
 
-```c#
-public static class AppTranslations {
-  /// <summary>
-  /// Text: O.K.
-  /// </summary>
-  public static readonly ILocalTextSource StrOk 
-    = new LiteLocalTextSource("Common.Ok");
+### Binding example (WPF)
+```csharp
+public static class AppTranslations
+{
+    public static readonly ILocalTextSource StrOk = new LiteLocalTextSource("Common.Ok");
 }
 ```
-It's possible to bind `TextBlock.Text` property to `Value` property exposed by StrOk.  
 ```xaml
 <TextBlock>
   <TextBlock.Text>
-      <Binding Path="Value" Source="{x:Static app:AppTranslations.StrOk}" Mode="OneWay"/>
+    <Binding Path="Value" Source="{x:Static app:AppTranslations.StrOk}" />
   </TextBlock.Text>
 </TextBlock>
+```
 
+### Customizing keys
+- `[Translate]` on fields/classes sets the key prefix; `[DoNotTranslate]` can skip or mark strings as non-localizable.
+- `TranslationUtils.MemberToTranslationKey` and `TypeToTranslationKey` events let you normalize keys (e.g., strip `Str` prefix).
+
+### Grammar helpers
+- `PolishGrammar.NounForm(number, form1, form2, form3)` returns the correct Polish noun form for the given count.
+```csharp
+// patyk, patyki, patyków (forms for 1, 2-4, many)
+var text1 = PolishGrammar.NounForm(1,  "patyk",  "patyki", "patyków");  // patyk
+var text2 = PolishGrammar.NounForm(3,  "patyk",  "patyki", "patyków");  // patyki
+var text3 = PolishGrammar.NounForm(12, "patyk",  "patyki", "patyków");  // patyków
+var text4 = PolishGrammar.NounForm(22, "patyk",  "patyki", "patyków");  // patyki
 ```
 
 ## Code signing
-
-Nuget [iSukces.Translation](https://www.nuget.org/packages/iSukces.Translation/) contains signed assemblies, but signing key is not privided in source repository. You can generate your own key or rid off signing.
+NuGet package [iSukces.Translation](https://www.nuget.org/packages/iSukces.Translation/) ships signed assemblies; the signing key is not included in this repository. Generate your own key or disable signing if you build locally.
